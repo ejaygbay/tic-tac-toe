@@ -1,0 +1,111 @@
+body {
+  box-sizing: border-box;
+}
+
+.container {
+  height: 80vh;
+  display: grid;
+  grid-template-columns: 50%;
+  justify-content: center;
+  margin: 50px 0px;
+}
+
+#instruction {
+  display: grid;
+  grid-template-columns: 100%;
+  background: red;
+}
+
+#instruction header,
+#player-selection header {
+  font-size: 30px;
+}
+
+#player-selection header h1 {
+  padding-top: 70px;
+}
+
+#player-selection header,
+div {
+  text-align: center;
+}
+
+#play {
+  margin-left: 1em;
+}
+
+#instruction article {
+  padding-bottom: 100px;
+}
+
+#instruction,
+#player-selection,
+#game-board {
+  background: #7391eb;
+  height: 70vh;
+}
+
+#play,
+#X,
+#O,
+#one-player,
+#two-players {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 50px;
+}
+
+header {
+  text-align: center;
+}
+
+.item {
+  height: 50px;
+  background: lightblue;
+  border: solid;
+  font-size: 50px;
+  text-align: center;
+  padding: 30px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 20% 20% 20%;
+  justify-content: center;
+}
+
+#result {
+  height: 30%;
+  width: 20%;
+  text-align: center;
+  background: #14338f;
+  position: absolute;
+  z-index: 2;
+  margin: 9.5% 0 0 15%;
+  opacity: 0.95;
+}
+
+#winner-text {
+  color: #fff;
+}
+
+#change-player,
+#replay {
+  font-size: 16px;
+  padding: 5px;
+}
+
+#game-board {
+  padding-top: 60px;
+}
+
+button:hover,
+.item:hover,
+#num-of-players,
+#restart {
+  cursor: pointer;
+}
+
+#num-of-players:hover {
+  /* color: gray; */
+}
