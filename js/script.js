@@ -105,6 +105,13 @@ const isEmpty = (box_id) => {
 const computerPlay = () => {
   let random_num =
     avaliable_box[Math.floor(Math.random() * avaliable_box.length)];
+  let smart_win = smartComputer(second_player);
+  if (smart_win) {
+    random_num = smart_win;
+  } else {
+    let smart_block = smartComputer(first_player);
+    if (smart_block) random_num = smart_block;
+  }
 
   if (isEmpty(random_num)) {
     insertPlayerValueInDOM(random_num, player_two_text);
@@ -142,6 +149,24 @@ const isWinner = (player_arr) => {
     if (winner_check_count === 3) return true;
   }
   return false;
+};
+
+const smartComputer = (player_arr) => {
+  for (let i = 0; i < winning_options.length; i++) {
+    let single_win_val = winning_options[i].split("");
+    let smart_check_count = 0;
+    let smart_play = 0;
+
+    for (let j = 0; j < single_win_val.length; j++) {
+      if (player_arr.includes(single_win_val[j])) smart_check_count += 1;
+      else smart_play = single_win_val[j];
+    }
+    if (smart_check_count === 2) {
+      if (document.getElementById(smart_play).innerHTML === "")
+        return smart_play;
+    }
+  }
+  return;
 };
 
 const isDraw = () => {
