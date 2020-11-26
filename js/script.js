@@ -42,7 +42,9 @@ const playerOne = (box) => {
     avaliable_box.splice(avaliable_box.indexOf(box_clicked_id), 1);
 
     if (isWinner(first_player)) {
-      displayResult("audio-win", "YOU WIN");
+      number_of_players <= 1
+        ? displayResult("audio-win", "YOU WIN")
+        : displayResult("audio-win", "PLAYER-ONE WIN");
     } else {
       if (isDraw()) {
         displayResult("audio-draw", "GAME DRAW");
@@ -76,7 +78,7 @@ const playerTwo = (box) => {
     avaliable_box.splice(avaliable_box.indexOf(box_clicked_id), 1);
 
     if (isWinner(second_player)) {
-      displayResult("audio-lose", "COMPUTER WIN");
+      displayResult("audio-win", "PLAYER-TWO WIN");
     } else {
       if (isDraw()) {
         displayResult("audio-draw", "GAME DRAW");
@@ -105,11 +107,11 @@ const isEmpty = (box_id) => {
 const computerPlay = () => {
   let random_num =
     avaliable_box[Math.floor(Math.random() * avaliable_box.length)];
-  let smart_win = smartComputer(second_player);
+  let smart_win = makeComputerSmart(second_player);
   if (smart_win) {
     random_num = smart_win;
   } else {
-    let smart_block = smartComputer(first_player);
+    let smart_block = makeComputerSmart(first_player);
     if (smart_block) random_num = smart_block;
   }
 
@@ -151,7 +153,7 @@ const isWinner = (player_arr) => {
   return false;
 };
 
-const smartComputer = (player_arr) => {
+const makeComputerSmart = (player_arr) => {
   for (let i = 0; i < winning_options.length; i++) {
     let single_win_val = winning_options[i].split("");
     let smart_check_count = 0;
@@ -202,6 +204,7 @@ const replay = () => {
   stopAudio();
   document.getElementById("game-board").style = "opacity: 1.0";
   avaliable_box = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  switchTerm("playerOne(event)");
   return;
 };
 
