@@ -106,13 +106,8 @@ button:hover,
 }
 
 @media only screen and (max-width: 780px) {
-  main {
-    width: 300px;
-    margin-left: -76px;
-  }
-
   .container {
-    height: inherit;
+    grid-template-columns: 70%;
   }
 
   #player-selection-btns-div {
@@ -143,5 +138,15 @@ button:hover,
   #result {
     width: 66%;
     margin-top: 110px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    /* height: 80vh; */
+    grid-template-columns: 90%;
+    /* justify-content: center;
+    margin: 50px 0px; */
+    /* height: inherit; */
   }
 }
