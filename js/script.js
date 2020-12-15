@@ -30,6 +30,8 @@ const selectPlayer = (e) => {
     player_one_text = "O";
     player_two_text = "X";
   }
+  document.getElementById("player-one-score").innerHTML = 0;
+  document.getElementById("player-two-score").innerHTML = 0;
   return;
 };
 
@@ -42,6 +44,7 @@ const playerOne = (box) => {
     avaliable_box.splice(avaliable_box.indexOf(box_clicked_id), 1);
 
     if (isWinner(first_player)) {
+      incrementScore("player-one-score");
       number_of_players <= 1
         ? displayResult("audio-win", "YOU WIN")
         : displayResult("audio-win", "PLAYER-ONE WIN");
@@ -78,6 +81,7 @@ const playerTwo = (box) => {
     avaliable_box.splice(avaliable_box.indexOf(box_clicked_id), 1);
 
     if (isWinner(second_player)) {
+      incrementScore("player-two-score");
       displayResult("audio-win", "PLAYER-TWO WIN");
     } else {
       if (isDraw()) {
@@ -123,6 +127,7 @@ const computerPlay = () => {
 
     if (isWinner(second_player)) {
       displayResult("audio-lose", "COMPUTER WIN");
+      incrementScore("player-two-score");
     } else {
       if (isDraw()) {
         displayResult("audio-draw", "GAME DRAW");
@@ -246,5 +251,11 @@ const stopAudio = () => {
     document.querySelector(".is-playing").currentTime = 0;
     document.querySelector(".is-playing").removeAttribute("class");
   }
+  return;
+};
+
+const incrementScore = (player) => {
+  let score = document.getElementById(player);
+  score.innerHTML = Number(score.innerHTML) + 1;
   return;
 };
