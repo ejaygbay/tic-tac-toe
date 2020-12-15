@@ -150,10 +150,23 @@ button:hover,
 
 @media only screen and (max-width: 480px) {
   .container {
-    /* height: 80vh; */
     grid-template-columns: 90%;
-    /* justify-content: center;
-    margin: 50px 0px; */
-    /* height: inherit; */
+  }
+
+  main {
+    margin-top: 20px;
+  }
+
+  #score-board {
+    margin-top: 20px;
+    grid-template-columns: 10% 40% 40% 10%;
+  }
+
+  section > header {
+    margin-top: 40px;
+  }
+
+  article > header {
+    padding-top: 20px;
   }
 }
